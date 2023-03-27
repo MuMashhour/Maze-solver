@@ -412,15 +412,14 @@ int main(void)
 {
     srand(time(NULL));
 
-    //blue is right hand
+    //red is right hand
     //yellow is a*
     std::thread drawMaze(draw);
 
     
     createMazeDFS();
     
-    //solveMazeRH();
-    delay = 100;
+    solveMazeRH();
     pos = start;
     solveMazeAstar();
 
