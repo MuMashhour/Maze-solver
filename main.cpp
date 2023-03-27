@@ -266,7 +266,8 @@ void solveMazeAstar() {
         sleep_for(nanoseconds(delay)); //delay to watch maze getting solved
 
         int minf = size * size;
-        int nextCell = 0;
+        int minh = size * size;
+        int nextCell = start;
 
         getEmptyWalls();
 
@@ -284,6 +285,11 @@ void solveMazeAstar() {
                 //if it is less than the lowest f make it the lowest f and make it the next cell
                 if (mazeBlocks[i][2] < minf) {
                     minf = mazeBlocks[i][2];
+                    minh = mazeBlocks[i][1];
+                    nextCell = i;
+                }else if (mazeBlocks[i][2] == minf && mazeBlocks[i][1] < minh) {
+                    minf = mazeBlocks[i][2];
+                    minh = mazeBlocks[i][1];
                     nextCell = i;
                 }
             }
