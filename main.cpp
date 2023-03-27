@@ -204,9 +204,17 @@ void getEmptyWalls() {
     }
 }
 void aStarCalculate(int position) {
-    mazeBlocks[position][0] = mazeBlocks[pos][0] + 1;
-    mazeBlocks[position][1] = abs(position % size - goal % size) + abs((position - position % size) / size - (goal - goal % size) / size);
-    mazeBlocks[position][2] = mazeBlocks[position][0] + mazeBlocks[position][1];
+    int g = mazeBlocks[pos][0] + 1;;
+    int h = abs(position % size - goal % size) + abs((position - position % size) / size - (goal - goal % size) / size);
+    int f = g + h;
+
+    if (mazeBlocks[position][2] == 0 || mazeBlocks[position][2] < f) {
+        mazeBlocks[position][0] = g;
+        mazeBlocks[position][1] = h;
+        mazeBlocks[position][2] = f;
+
+        mazeBlocks[position][4] = pos;
+    }  
 }
 
 void createMazeDFS() {
@@ -266,8 +274,7 @@ void solveMazeAstar() {
         for (int i = 0; i < emptyWallsCount; i++) {
             //check if neighbor has been visited before
             if (!mazeBlocks[pos + emptyWalls[i]][3]) {
-                aStarCalculate(pos + emptyWalls[i]);
-                mazeBlocks[pos + emptyWalls[i]][4] = pos;
+                aStarCalculate(pos + emptyWalls[i]);       
             }
         }
             
@@ -412,7 +419,8 @@ int main(void)
     
     createMazeDFS();
     
-    solveMazeRH();
+    //solveMazeRH();
+    delay = 100;
     pos = start;
     solveMazeAstar();
 
