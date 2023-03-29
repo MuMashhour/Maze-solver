@@ -4,9 +4,7 @@ This program generates mazes using Randomized Depth-First Search algorithm and s
 ### Maze Generation
 The maze is generated using Randomized Depth-First Search algorithm, which starts at a random cell and recursively explores all unvisited neighbors, marking them as visited and adding them to a stack. When no unvisited neighbours are found, the algorithm returns to the last cell with unvisited neighbours and continues exploring until all cells have been visited. Unfortunately, due to the recursive nature of Randomized DFS, mazes larger than 95x95 can cause stack overflow.
 
-<video width="640" height="640" controls>
-  <source src="https://user-images.githubusercontent.com/98267072/228512509-1b5c0617-9fd9-4efd-bc52-2f80fbc05f11.mp4" type="video/mp4">
-</video>
+https://user-images.githubusercontent.com/98267072/228512509-1b5c0617-9fd9-4efd-bc52-2f80fbc05f11.mp4
 
 ### Maze Solving
 
