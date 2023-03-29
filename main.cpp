@@ -397,8 +397,7 @@ int draw() {
 
                 //horizontal walls
                 if (walls[i + j * size][1] == 0) {
-                    for (int l = 1; l < lineWidth; l++)
-                    {
+                    for (int l = 1; l < lineWidth; l++){
                         glBegin(GL_LINES);
                         glVertex2f(-1 + (2 * i) / gridSize, 1 - (2 * j) / gridSize + 0.001 * l);
                         glVertex2f(-1 + (2 * i) / gridSize + 2 / gridSize, 1 - (2 * j) / gridSize + 0.001 * l);
