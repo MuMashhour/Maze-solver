@@ -9,6 +9,7 @@ using namespace std::this_thread;
 using namespace std::chrono;
 
 int delay = 0; // delay in ns for visualisation
+int lineWidth = 10;
 
 //mazeCreation
 const int size = 80;
@@ -385,19 +386,24 @@ int draw() {
 
                 //vertical walls
                 if (walls[i + j * size][0] == 0) {
-                    glBegin(GL_LINES);
-                    glVertex2f(-1 + (2 * i) / gridSize, 1 - (2 * j) / gridSize);
-                    glVertex2f(-1 + (2 * i) / gridSize, 1 - ((2 * j) / gridSize) - 2 / gridSize);
-                    glEnd();
+                    for (int l = 1; l < lineWidth; l++){
+                        glBegin(GL_LINES);
+                        glVertex2f(-1 + (2 * i) / gridSize + 0.001 * l, 1 - (2 * j) / gridSize);
+                        glVertex2f(-1 + (2 * i) / gridSize + 0.001 * l, 1 - ((2 * j) / gridSize) - 2 / gridSize);
+                        glEnd();
+                    }   
                 }
                 
 
                 //horizontal walls
                 if (walls[i + j * size][1] == 0) {
-                    glBegin(GL_LINES);
-                    glVertex2f(-1 + (2 * i) / gridSize, 1 - (2 * j) / gridSize);
-                    glVertex2f(-1 + (2 * i) / gridSize + 2 / gridSize, 1 - (2 * j) / gridSize);
-                    glEnd();
+                    for (int l = 1; l < lineWidth; l++)
+                    {
+                        glBegin(GL_LINES);
+                        glVertex2f(-1 + (2 * i) / gridSize, 1 - (2 * j) / gridSize + 0.001 * l);
+                        glVertex2f(-1 + (2 * i) / gridSize + 2 / gridSize, 1 - (2 * j) / gridSize + 0.001 * l);
+                        glEnd();
+                    }   
                 }
             }
         }
